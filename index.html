@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <script src="Data_Junk.js"></script>
+        <style>
+            td, th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            tr:nth-child(even){background-color: #f2f2f2;}
+            tr:hover {background-color: #ddd;}
+            th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+        </style>
+    </head>
+    <body onload="ShowElement('')">
+        <div id="menu">
+            <a href="#" onclick="ShowContentJunk()">Junk</a> | 
+            <a href="#" onclick="ShowContentLegendaries()">Legendaries</a>
+            <hr>
+        </div>
+        <div id="content_legendaries">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>1 Star</th>
+                    <th>2 Star</th>
+                    <th>3 Star</th>
+                </tr>
+                <tr>
+                    <td>Weapon</td>
+                    <td>50</td>
+                    <td>150</td>
+                    <td>400</td>
+                </tr>
+                <tr>
+                    <td>Armour</td>
+                    <td>30</td>
+                    <td>90</td>
+                    <td>240</td>
+                </tr>
+                <tr>
+                    <td>Power Armour</td>
+                    <td>100</td>
+                    <td>200</td>
+                    <td>450</td>
+                </tr>
+            </table>
+        </div>
+        <div id="content_junk">
+            <select id="junk_items_select"></select>
+            <input type="text" id="junk_amount" />
+            <button id="show_junk_data" onclick="ShowJunkItemData()">Show</button>
+            <div id="junk_item_data"></div>
+        </div>
+    </body>
+</html>
+<script>    
+    function ShowElement(id)
+    {
+        var ids = [
+            "content_legendaries",
+            "content_junk"
+        ];
+        for (i = 0; i < ids.length; i++)
+        {
+            var divElement = document.getElementById(ids[i]);
+            var style = "none";
+            if (id === ids[i])
+            {
+                style = "block";
+            }
+            divElement.style.display = style;
+        }
+    }
+
+    function ShowContentLegendaries()
+    {
+        ShowElement("content_legendaries");
+    }
+
+    function ShowContentJunk()
+    {
+        ShowElement("content_junk");
+        let data = GetJunkData();
+        var selectElement = document.getElementById("junk_items_select");
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0); // Remove the first option (index 0) repeatedly
+        }
+        for (i = 0; i < data.length; i++)
+        {
+            var newOption = document.createElement("option");
+            // Set the value and text of the new option
+            newOption.value = i;
+            newOption.text = data[i].Item;
+            // Append the new option to the select element
+            selectElement.appendChild(newOption);
+        }
+    }
+    function ShowJunkItemData()
+    {
+        var amount = document.getElementById("junk_amount").value;
+        if (amount === "")
+        {
+            amount = 0;
+        }
+        var selectElement = document.getElementById("junk_items_select");
+        // Get the selected option
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        // Get the text of the selected option
+        var selectedOptionText = selectedOption.text;
+        let data = GetJunkData();
+        for (i = 0; i < data.length; i++)
+        {
+            if (data[i].Item === selectedOptionText)
+            {
+                let sell = amount - data[i].Keep;
+                if (sell < 0)
+                {
+                    sell = 0;
+                }
+                var divElement = document.getElementById("junk_item_data");
+                // Update the content of the div
+                let table = "<table>";
+                table += `<tr><td><b>Item</b></td><td>: ${data[i].Item}</td></tr>`;
+                table += `<tr><td><b>Stored</b></td><td>: ${amount}</td></tr>`;
+                table += `<tr><td><b>Keep</b></td><td>: ${data[i].Keep}</td></tr>`;
+                table += `<tr><td><b>Sell</b></td><td>: ${sell}</td></tr>`;
+                table += `<tr><td><b>Price</b></td><td>: ${data[i].Sell}</td></tr>`;
+                table += "</table>";
+                divElement.innerHTML = "<hr>" + table;
+            }
+        }
+    }
+</script>
