@@ -1,98 +1,124 @@
 <html>
-    <head>
-        <script src="Data_Junk.js"></script>
-        <style>
-            td, th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-            tr:nth-child(even){background-color: #f2f2f2;}
-            tr:hover {background-color: #ddd;}
-            th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #04AA6D;
-                color: white;
-            }
-        </style>
-    </head>
-    <body onload="ShowElement('')">
-        <div id="menu">
-            <a href="#" onclick="ShowContentJunk()">Junk</a> | 
-            <a href="#" onclick="ShowContentLegendaries()">Legendaries</a>
-            <hr>
+
+<head>
+    <script src="Data_Junk.js"></script>
+    <style>
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+
+<body onload="ShowElement('')">
+    <div id="menu">
+        <a href="#" onclick="ShowContentJunk()">Junk</a> |
+        <a href="#" onclick="ShowContentLegendaries()">Legendaries</a>
+        <hr>
+    </div>
+    <div id="content_legendaries">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>1 Star</th>
+                <th>2 Star</th>
+                <th>3 Star</th>
+            </tr>
+            <tr>
+                <td>Weapon</td>
+                <td>50</td>
+                <td>150</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>Armour</td>
+                <td>30</td>
+                <td>90</td>
+                <td>240</td>
+            </tr>
+            <tr>
+                <td>Power Armour</td>
+                <td>100</td>
+                <td>200</td>
+                <td>450</td>
+            </tr>
+        </table>
+    </div>
+    <div id="content_junk">
+        <a href="#" onclick="ShowContentJunk('all')">All</a> |
+        <a href="#" onclick="ShowContentJunk('single')">Single</a>
+        <hr>
+        <div id="content_junk_all">
         </div>
-        <div id="content_legendaries">
-            <table>
-                <tr>
-                    <th>Item</th>
-                    <th>1 Star</th>
-                    <th>2 Star</th>
-                    <th>3 Star</th>
-                </tr>
-                <tr>
-                    <td>Weapon</td>
-                    <td>50</td>
-                    <td>150</td>
-                    <td>400</td>
-                </tr>
-                <tr>
-                    <td>Armour</td>
-                    <td>30</td>
-                    <td>90</td>
-                    <td>240</td>
-                </tr>
-                <tr>
-                    <td>Power Armour</td>
-                    <td>100</td>
-                    <td>200</td>
-                    <td>450</td>
-                </tr>
-            </table>
-        </div>
-        <div id="content_junk">
+        <div id="content_junk_single">
             <select id="junk_items_select"></select>
             <input type="text" id="junk_amount" />
             <button id="show_junk_data" onclick="ShowJunkItemData()">Show</button>
             <div id="junk_item_data"></div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
-<script>    
-    function ShowElement(id)
-    {
+<script>
+    var Block = "block";
+    var None = "none";
+    function ToggleElement(id, style) {
+        console.log(`Toggle : ${id} : ${style}`);
+        var divElement = document.getElementById(id);
+        divElement.style.display = style;
+    }
+
+    function ShowElement(id) {
         var ids = [
             "content_legendaries",
             "content_junk"
         ];
-        for (i = 0; i < ids.length; i++)
-        {
-            var divElement = document.getElementById(ids[i]);
-            var style = "none";
-            if (id === ids[i])
-            {
-                style = "block";
+        for (i = 0; i < ids.length; i++) {
+            var style = None;
+            if (id === ids[i]) {
+                style = Block;
             }
-            divElement.style.display = style;
+            ToggleElement(ids[i], style);
         }
     }
 
-    function ShowContentLegendaries()
-    {
+    function ShowContentLegendaries() {
         ShowElement("content_legendaries");
     }
 
-    function ShowContentJunk()
-    {
+    function ShowContentJunk(type) {
         ShowElement("content_junk");
+        ToggleElement("content_junk_all", None);
+        ToggleElement("content_junk_single", None);
+        if (type === null || type === "") {
+            return;
+        }
+        var id = `content_junk_${type}`;
+        ToggleElement(id, Block);
         let data = GetJunkData();
         var selectElement = document.getElementById("junk_items_select");
         while (selectElement.options.length > 0) {
             selectElement.remove(0); // Remove the first option (index 0) repeatedly
         }
-        for (i = 0; i < data.length; i++)
-        {
+        for (i = 0; i < data.length; i++) {
             var newOption = document.createElement("option");
             // Set the value and text of the new option
             newOption.value = i;
@@ -101,11 +127,9 @@
             selectElement.appendChild(newOption);
         }
     }
-    function ShowJunkItemData()
-    {
+    function ShowJunkItemData() {
         var amount = document.getElementById("junk_amount").value;
-        if (amount === "")
-        {
+        if (amount === "") {
             amount = 0;
         }
         var selectElement = document.getElementById("junk_items_select");
@@ -114,26 +138,35 @@
         // Get the text of the selected option
         var selectedOptionText = selectedOption.text;
         let data = GetJunkData();
-        for (i = 0; i < data.length; i++)
-        {
-            if (data[i].Item === selectedOptionText)
-            {
+        var divElement = null;
+        let tableAll = "<table>";
+        tableAll += `<tr><th>Item</th><th>Keep</th><th>Price</th><th>Bulk $</th></tr>`;
+        for (i = 0; i < data.length; i++) {
+            if (data[i].Item === selectedOptionText) {
                 let sell = amount - data[i].Keep;
-                if (sell < 0)
-                {
+                if (sell < 0) {
                     sell = 0;
                 }
-                var divElement = document.getElementById("junk_item_data");
+                let bulkPrice = data[i].Sell * data[i].Bulk;
+                divElement = document.getElementById("junk_item_data");
                 // Update the content of the div
                 let table = "<table>";
-                table += `<tr><td><b>Item</b></td><td>: ${data[i].Item}</td></tr>`;
-                table += `<tr><td><b>Stored</b></td><td>: ${amount}</td></tr>`;
-                table += `<tr><td><b>Keep</b></td><td>: ${data[i].Keep}</td></tr>`;
-                table += `<tr><td><b>Sell</b></td><td>: ${sell}</td></tr>`;
-                table += `<tr><td><b>Price</b></td><td>: ${data[i].Sell}</td></tr>`;
+                table += `<tr><td><b>Item</b></td><td>${data[i].Item}</td></tr>`;
+                table += `<tr><td><b>Stored</b></td><td>${amount}</td></tr>`;
+                table += `<tr><td><b>Keep</b></td><td>${data[i].Keep}</td></tr>`;
+                table += `<tr><td><b>Sell</b></td><td>${sell}</td></tr>`;
+                table += `<tr><td><b>Price</b></td><td>${data[i].Sell}</td></tr>`;
+                table += `<tr><td><b>Bulk</b></td><td>${data[i].Bulk}</td></tr>`;
+                table += `<tr><td><b>Bulk Price</b></td><td>${bulkPrice}</td></tr>`;
                 table += "</table>";
                 divElement.innerHTML = "<hr>" + table;
             }
+
+            tableAll += `<tr><td>${data[i].Item}</td><th>${data[i].Keep}</td><th>${data[i].Sell}</td><td>${bulkPrice}</td></tr>`;
         }
+        tableAll += "</table>";
+        divElement = document.getElementById("content_junk_all");
+        console.log(tableAll);
+        divElement.innerHTML = tableAll;
     }
 </script>

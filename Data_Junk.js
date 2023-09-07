@@ -1,170 +1,202 @@
-function GetJunkData()
-{
+function GetJunkData() {
     return [
-        {
-            "Item": "Waste Acid",
-            "Keep": 50,
-            "Sell": 4
-        },
-        {
-            "Item": "Excess Adhesive",
-            "Keep": 200,
-            "Sell": 3
-        },
         {
             "Item": "Aluminum scrap",
             "Keep": 100,
-            "Sell": 3
+            "Sell": 3,
+            "Bulk": 10
         },
         {
-            "Item": "Waste Antiseptic",
-            "Keep": 50,
-            "Sell": 2
-        },
-        {
-            "Item": "Raw Asbestos",
-            "Keep": 50,
-            "Sell": 3
-        },
-        {
-            "Item": "Ballistic Fiber Sc",
+            "Item": "Ballistic Fiber Scrap",
             "Keep": 200,
-            "Sell": 8
+            "Sell": 8,
+            "Bulk": 0
         },
         {
-            "Item": "Black Titanium S",
+            "Item": "Black titanium scrap",
             "Keep": 1000000,
-            "Sell": 2
+            "Sell": 2,
+            "Bulk": 0
         },
         {
-            "Item": "Bone Shards",
+            "Item": "Bone shards",
             "Keep": 50,
-            "Sell": 1
+            "Sell": 1,
+            "Bulk": 20
         },
         {
-            "Item": "Ceramic Scrap",
+            "Item": "Ceramic scrap",
             "Keep": 50,
-            "Sell": 1
+            "Sell": 1,
+            "Bulk": 15
         },
         {
             "Item": "Circuits",
             "Keep": 100,
-            "Sell": 3
+            "Sell": 3,
+            "Bulk": 0
         },
         {
-            "Item": "Raw Cloth",
+            "Item": "Concrete scrap",
             "Keep": 100,
-            "Sell": 1
+            "Sell": 2,
+            "Bulk": 15
         },
         {
-            "Item": "Concrete Scrap",
-            "Keep": 100,
-            "Sell": 2
-        },
-        {
-            "Item": "Copper Scrap",
+            "Item": "Copper scrap",
             "Keep": 50,
-            "Sell": 3
+            "Sell": 3,
+            "Bulk": 10
         },
         {
-            "Item": "Cork Scrap",
+            "Item": "Cork scrap",
             "Keep": 50,
-            "Sell": 1
+            "Sell": 1,
+            "Bulk": 10
         },
         {
-            "Item": "Crystal Shards",
+            "Item": "Crystal shards",
             "Keep": 100,
-            "Sell": 4
+            "Sell": 4,
+            "Bulk": 0
         },
         {
-            "Item": "Raw Fertilizer",
-            "Keep": 50,
-            "Sell": 0.5
-        },
-        {
-            "Item": "Fiber Optics Bun",
-            "Keep": 100,
-            "Sell": 3
-        },
-        {
-            "Item": "Fiberglass Spool",
-            "Keep": 100,
-            "Sell": 2
-        },
-        {
-            "Item": "Loose Gears",
-            "Keep": 1000000,
-            "Sell": 2
-        },
-        {
-            "Item": "Glass Shard",
-            "Keep": 100,
-            "Sell": 1
-        },
-        {
-            "Item": "Gold Scrap",
-            "Keep": 50,
-            "Sell": 4
-        },
-        {
-            "Item": "Lead Scrap",
+            "Item": "Excess adhesive",
             "Keep": 200,
-            "Sell": 2
+            "Sell": 3,
+            "Bulk": 10
         },
         {
-            "Item": "Raw Leather",
+            "Item": "Fiber optics",
+            "Keep": 100,
+            "Sell": 3,
+            "Bulk": 0
+        },
+        {
+            "Item": "Fiberglass spool",
+            "Keep": 100,
+            "Sell": 2,
+            "Bulk": 0
+        },
+        {
+            "Item": "Glass shards",
+            "Keep": 100,
+            "Sell": 1,
+            "Bulk": 15
+        },
+        {
+            "Item": "Gold scrap",
             "Keep": 50,
-            "Sell": 2
+            "Sell": 4,
+            "Bulk": 0
         },
         {
-            "Item": "Nuclear Waste",
+            "Item": "Lead scrap",
+            "Keep": 200,
+            "Sell": 2,
+            "Bulk": 20
+        },
+        {
+            "Item": "Loose gears",
+            "Keep": 1000000,
+            "Sell": 2,
+            "Bulk": 10
+        },
+        {
+            "Item": "Loose screws",
+            "Keep": 1000000,
+            "Sell": 4,
+            "Bulk": 0
+        },
+        {
+            "Item": "Loose springs",
+            "Keep": 1000000,
+            "Sell": 2,
+            "Bulk": 10
+        },
+        {
+            "Item": "Molded plastic",
             "Keep": 100,
-            "Sell": 3
+            "Sell": 2,
+            "Bulk": 10
         },
         {
-            "Item": "Waste Oil",
+            "Item": "Nuclear waste",
             "Keep": 100,
-            "Sell": 2
+            "Sell": 3,
+            "Bulk": 0
         },
         {
-            "Item": "Molded Plastic",
-            "Keep": 100,
-            "Sell": 2
-        },
-        {
-            "Item": "Raw Rubber",
+            "Item": "Raw asbestos",
             "Keep": 50,
-            "Sell": 1.5
+            "Sell": 3,
+            "Bulk": 0
         },
         {
-            "Item": "Loose Screws",
-            "Keep": 1000000,
-            "Sell": 4
+            "Item": "Raw cloth",
+            "Keep": 100,
+            "Sell": 1,
+            "Bulk": 30
         },
         {
-            "Item": "Silver Scrap",
+            "Item": "Raw fertilizer",
             "Keep": 50,
-            "Sell": 2
+            "Sell": 0.5,
+            "Bulk": 20
         },
         {
-            "Item": "Loose Spring",
-            "Keep": 1000000,
-            "Sell": 2
+            "Item": "Raw leather",
+            "Keep": 50,
+            "Sell": 2,
+            "Bulk": 15
         },
         {
-            "Item": "Steel Scrap",
+            "Item": "Raw rubber",
+            "Keep": 50,
+            "Sell": 1.5,
+            "Bulk": 10
+        },
+        {
+            "Item": "Silver scrap",
+            "Keep": 50,
+            "Sell": 2,
+            "Bulk": 0
+        },
+        {
+            "Item": "Steel scrap",
             "Keep": 100,
-            "Sell": 0.5
+            "Sell": 0.5,
+            "Bulk": 30
         },
         {
-            "Item": "Ultracite Scrap",
+            "Item": "Ultracite scrap",
             "Keep": 1000000,
-            "Sell": 6
+            "Sell": 6,
+            "Bulk": 0
         },
         {
-            "Item": "Wood Scraps",
+            "Item": "Waste acid",
+            "Keep": 50,
+            "Sell": 4,
+            "Bulk": 15
+        },
+        {
+            "Item": "Waste antiseptic",
+            "Keep": 50,
+            "Sell": 2,
+            "Bulk": 0
+        },
+        {
+            "Item": "Waste oil",
             "Keep": 100,
-            "Sell": 0.5
+            "Sell": 2,
+            "Bulk": 10
+        },
+        {
+            "Item": "Wood scraps",
+            "Keep": 100,
+            "Sell": 0.5,
+            "Bulk": 30
         }
     ];
 }
