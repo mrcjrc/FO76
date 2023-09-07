@@ -24,54 +24,183 @@
             background-color: #04AA6D;
             color: white;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+
+        .slide-toggle {
+            display: none;
+        }
+
+        .slidemenu {
+            font-family: arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .slidemenu label {
+            width: 25%;
+            text-align: center;
+            display: block;
+            float: left;
+            color: #333;
+            opacity: 0.2;
+
+        }
+
+        .slidemenu label:hover {
+            cursor: pointer;
+            color: #666;
+        }
+
+        .slidemenu label span {
+            display: block;
+            padding: 10px;
+        }
+
+        .slidemenu label .icon {
+            font-size: 20px;
+            border: solid 2px #333;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            display: block;
+            margin: 0 auto;
+            line-height: 50px;
+            border-radius: 50%;
+        }
+
+        /*Bar Style*/
+
+        .slider {
+            width: 100%;
+            height: 5px;
+            display: block;
+            background: #ccc;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .slider .bar {
+            width: 25%;
+            height: 5px;
+            background: #333;
+            border-radius: 5px;
+        }
+
+        /*Animations*/
+        .slidemenu label,
+        .slider .bar {
+            transition: all 500ms ease-in-out;
+            -webkit-transition: all 500ms ease-in-out;
+            -moz-transition: all 500ms ease-in-out;
+        }
+        /*Toggle*/
+        .slidemenu .slide-toggle:checked+label {
+            opacity: 1;
+        }
+        .slidemenu #slide-item-1:checked~.slider .bar {
+            margin-left: 0;
+        }
+
+        .slidemenu #slide-item-2:checked~.slider .bar {
+            margin-left: 25%;
+        }
+
+        .slidemenu #slide-item-3:checked~.slider .bar {
+            margin-left: 50%;
+        }
+
+        .slidemenu #slide-item-4:checked~.slider .bar {
+            margin-left: 75%;
+        }
     </style>
 </head>
 
 <body onload="ShowElement('')">
-    <div id="menu">
-        <a href="#" onclick="ShowContentJunk()">Junk</a> |
-        <a href="#" onclick="ShowContentLegendaries()">Legendaries</a>
-        <hr>
-    </div>
-    <div id="content_legendaries">
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>1 Star</th>
-                <th>2 Star</th>
-                <th>3 Star</th>
-            </tr>
-            <tr>
-                <td>Weapon</td>
-                <td>50</td>
-                <td>150</td>
-                <td>400</td>
-            </tr>
-            <tr>
-                <td>Armour</td>
-                <td>30</td>
-                <td>90</td>
-                <td>240</td>
-            </tr>
-            <tr>
-                <td>Power Armour</td>
-                <td>100</td>
-                <td>200</td>
-                <td>450</td>
-            </tr>
-        </table>
-    </div>
-    <div id="content_junk">
-        <a href="#" onclick="ShowContentJunk('all')">All</a> |
-        <a href="#" onclick="ShowContentJunk('single')">Single</a>
-        <hr>
-        <div id="content_junk_all">
+    <div class="container">
+        <nav class="slidemenu">
+
+            <!-- Item 1 -->
+            <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
+            <label for="slide-item-1" onclick="ShowContentJunk()">
+                <p class="icon">♬</p><span>Junk</span>
+            </label>
+
+            <!-- Item 2 -->
+            <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
+            <label for="slide-item-2" onclick="ShowContentLegendaries()">
+                <p class="icon">★</p><span>Legendaries</span>
+            </label>
+
+            <!-- Item 3 -->
+            <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
+            <label for="slide-item-3">
+                <p class="icon">✈</p><span>Folio</span>
+            </label>
+
+            <!-- Item 4 -->
+            <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
+            <label for="slide-item-4">
+                <p class="icon">✎</p><span>Blog</span>
+            </label>
+
+            <div class="clear"></div>
+
+            <!-- Bar -->
+            <div class="slider">
+                <div class="bar"></div>
+            </div>
+
+        </nav>
+        <div id="content_legendaries">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>1 Star</th>
+                    <th>2 Star</th>
+                    <th>3 Star</th>
+                </tr>
+                <tr>
+                    <td>Weapon</td>
+                    <td>50</td>
+                    <td>150</td>
+                    <td>400</td>
+                </tr>
+                <tr>
+                    <td>Armour</td>
+                    <td>30</td>
+                    <td>90</td>
+                    <td>240</td>
+                </tr>
+                <tr>
+                    <td>Power Armour</td>
+                    <td>100</td>
+                    <td>200</td>
+                    <td>450</td>
+                </tr>
+            </table>
         </div>
-        <div id="content_junk_single">
-            <select id="junk_items_select"></select>
-            <input type="text" id="junk_amount" />
-            <button id="show_junk_data" onclick="ShowJunkItemData()">Show</button>
-            <div id="junk_item_data"></div>
+        <div id="content_junk">
+            <a href="#" onclick="ShowContentJunk('all')">All</a> |
+            <a href="#" onclick="ShowContentJunk('single')">Single</a>
+            <hr>
+            <div id="content_junk_all">
+            </div>
+            <div id="content_junk_single">
+                <select id="junk_items_select"></select>
+                <input type="text" id="junk_amount" />
+                <button id="show_junk_data" onclick="ShowJunkItemData()">Show</button>
+                <div id="junk_item_data"></div>
+            </div>
         </div>
     </div>
 </body>
