@@ -65,6 +65,10 @@ function ShowContentJunk(type) {
     console.log(tableAll);
     divElement.innerHTML = tableAll;
 }
+function ClearJunkAmount()
+{
+    document.getElementById("junk_amount").value = "";
+}
 function ShowJunkItemData() {
     var amount = document.getElementById("junk_amount").value;
     if (amount === "") {

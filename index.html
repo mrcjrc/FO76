@@ -2,46 +2,46 @@
 
 <head>
     <script src="Data_Junk.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">    
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="functions.js"></script>
 </head>
 
 <body onload="ShowElement('')">
-        <nav class="slidemenu">
+    <nav class="slidemenu">
 
-            <!-- Item 1 -->
-            <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
-            <label for="slide-item-1" onclick="ShowContentJunk()">
-                <p class="icon">♬</p><span>Junk</span>
-            </label>
+        <!-- Item 1 -->
+        <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
+        <label for="slide-item-1" onclick="ShowContentJunk()">
+            <p class="icon">♬</p><span>Junk</span>
+        </label>
 
-            <!-- Item 2 -->
-            <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
-            <label for="slide-item-2" onclick="ShowContentLegendaries()">
-                <p class="icon">★</p><span>Legendaries</span>
-            </label>
+        <!-- Item 2 -->
+        <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
+        <label for="slide-item-2" onclick="ShowContentLegendaries()">
+            <p class="icon">★</p><span>Legendaries</span>
+        </label>
 
-            <!-- Item 3 -->
-            <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
-            <label for="slide-item-3">
-                <p class="icon">✈</p><span>Folio</span>
-            </label>
+        <!-- Item 3 -->
+        <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
+        <label for="slide-item-3">
+            <p class="icon">✈</p><span>Folio</span>
+        </label>
 
-            <!-- Item 4 -->
-            <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
-            <label for="slide-item-4">
-                <p class="icon">✎</p><span>Blog</span>
-            </label>
+        <!-- Item 4 -->
+        <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
+        <label for="slide-item-4">
+            <p class="icon">✎</p><span>Blog</span>
+        </label>
 
-            <div class="clear"></div>
+        <div class="clear"></div>
 
-            <!-- Bar -->
-            <div class="slider">
-                <div class="bar"></div>
-            </div>
+        <!-- Bar -->
+        <div class="slider">
+            <div class="bar"></div>
+        </div>
 
-        </nav>
-        <div class="content">
+    </nav>
+    <div class="content">
         <div id="content_legendaries">
             <table>
                 <tr>
@@ -77,20 +77,9 @@
             <div id="content_junk_all">
             </div>
             <div id="content_junk_single">
-                <div class="form-style-5">
-                    <form>
-                    <fieldset>
-                        <label for="junk_items_select">Item:</label>
-                        <select id="junk_items_select"></select>
-                        <input type="text" id="junk_amount" placeholder="Stored Amount *">
-                    </fieldset>
-                    <input type="button" value="Apply" onclick="ShowJunkItemData()" />
-                    </form>
-                </div>
-                <div class="select">
-                </div>
-                <input type="text" id="junk_amount" />
-                <button id="show_junk_data" onclick="ShowJunkItemData()">Show</button>
+                <select id="junk_items_select" onchange="ClearJunkAmount()" style="margin:2px"></select><br />
+                <input type="text" id="junk_amount"placeholder="Stored Amount *" style="margin:2px"><br />
+                <input type="button" value="Apply" onclick="ShowJunkItemData()" style="margin:2px" /><br />
                 <div id="junk_item_data"></div>
             </div>
         </div>
@@ -99,5 +88,5 @@
 
 </html>
 <script>
-    
+
 </script>
