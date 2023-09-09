@@ -50,8 +50,7 @@ function ShowContentJunk(type) {
     while (selectElement.options.length > 0) {
         selectElement.remove(0); // Remove the first option (index 0) repeatedly
     }
-    let tableAll = "<table>";
-    tableAll += `<tr><th>Item</th><th>Keep</th><th>Price</th><th>Bulk Amount</th><th>Bulk $</th></tr>`;
+    var table = document.getElementById("allJunkTable_Body");
     for (i = 0; i < data.length; i++) {
         let item = GetJunkItem(i, data);
         var newOption = document.createElement("option");
@@ -60,12 +59,15 @@ function ShowContentJunk(type) {
         newOption.text = item.Item;
         // Append the new option to the select element
         selectElement.appendChild(newOption);
-        tableAll += `<tr><td>${item.Item}</td><td>${item.Keep}</td><td>${item.SellPrice}</td><td>${item.BulkQuantity}</td><td>${item.BulkPrice}</td></tr>`;
+        
+        var row = table.insertRow(i);
+        var cells = [ item.Item, item.Keep, item.SellPrice, item.BulkQuantity, item.BulkPrice ];
+        for (c = 0; c < cells.length; c++)
+        {
+            var cell1 = row.insertCell(c);
+            cell1.innerHTML = cells[c];
+        }
     }
-    tableAll += "</table>";
-    divElement = document.getElementById("content_junk_all");
-    console.log(tableAll);
-    divElement.innerHTML = tableAll;
 }
 function ClearJunkAmount()
 {
@@ -91,7 +93,15 @@ function ShowJunkItemData() {
                 sell = 0;
             }
             divElement = document.getElementById("junk_item_data");
+            document.getElementById("item.name").value = item.Item;
+            document.getElementById("item.amount").value = amount;
+            document.getElementById("item.Keep").value = item.Keep;
+            document.getElementById("item.sell").value = sell;
+            document.getElementById("item.SellPrice").value = item.SellPrice;
+            document.getElementById("item.BulkQuantity").value = item.BulkQuantity;
+            document.getElementById("item.BulkPrice").value = item.BulkPrice;
             // Update the content of the div
+            /*
             let table = "<table>";
             table += `<tr><td><b>Item</b></td><td>${item.Item}</td></tr>`;
             table += `<tr><td><b>Stored</b></td><td>${amount}</td></tr>`;
@@ -102,6 +112,7 @@ function ShowJunkItemData() {
             table += `<tr><td><b>Bulk Price</b></td><td>${item.BulkPrice}</td></tr>`;
             table += "</table>";
             divElement.innerHTML = "<hr>" + table;
+            */
         }
     }
 }

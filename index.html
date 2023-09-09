@@ -1,90 +1,156 @@
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="Data_Junk.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="functions.js"></script>
     <script src="forms.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Hello, world!</title>
 </head>
 
 <body onload="ShowElement('')">
-        
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Junk <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#" onclick="ShowContentJunk('all')">All Junk</a></li>
-                <li><a href="#" onclick="ShowContentJunk('single')">Individual</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
-          </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" onclick="ShowContentLegendaries()">Lengendaries</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Junk</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="ShowContentJunk('all')">All Junk</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="ShowContentJunk('single')">Individual</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>-->
+            </div>
         </div>
-      </nav>
+    </nav>
     <div class="container">
-        <div id="content_legendaries">
-            <table>
-                <tr>
-                    <th>Item</th>
-                    <th>1 Star</th>
-                    <th>2 Star</th>
-                    <th>3 Star</th>
-                </tr>
-                <tr>
-                    <td>Weapon</td>
-                    <td>50</td>
-                    <td>150</td>
-                    <td>400</td>
-                </tr>
-                <tr>
-                    <td>Armour</td>
-                    <td>30</td>
-                    <td>90</td>
-                    <td>240</td>
-                </tr>
-                <tr>
-                    <td>Power Armour</td>
-                    <td>100</td>
-                    <td>200</td>
-                    <td>450</td>
-                </tr>
-            </table>
-        </div>
-        <div id="content_junk_all"></div>
-        <div id="content_junk_single">
-            <form class="well form-horizontal" action=" " method="post"  id="contact_form">
-                <fieldset>
-                    <div class="form-group"> 
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select id="junk_items_select" class="form-control selectpicker" ></select>
-                            </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <!--
+                -------------------------------------------------------------------
+                LEGENDARIES
+                -------------------------------------------------------------------
+            -->
+                <div id="content_legendaries">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>Item</th>
+                            <th>1 Star</th>
+                            <th>2 Star</th>
+                            <th>3 Star</th>
+                        </tr>
+                        <tr>
+                            <td>Weapon</td>
+                            <td>50</td>
+                            <td>150</td>
+                            <td>400</td>
+                        </tr>
+                        <tr>
+                            <td>Armour</td>
+                            <td>30</td>
+                            <td>90</td>
+                            <td>240</td>
+                        </tr>
+                        <tr>
+                            <td>Power Armour</td>
+                            <td>100</td>
+                            <td>200</td>
+                            <td>450</td>
+                        </tr>
+                    </table>
+                </div>
+                <!--
+                -------------------------------------------------------------------
+                JUNK ALL
+                -------------------------------------------------------------------
+            -->
+                <div id="content_junk_all">
+                    <table class="table table-striped table-bordered" id="allJunkTable">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Keep</th>
+                                <th>Price</th>
+                                <th>Bulk Qty</th>
+                                <th>Bulk Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allJunkTable_Body"></tbody>
+                    </table>
+                </div>
+                <!--
+                -------------------------------------------------------------------
+                JUNK SINGLE
+                -------------------------------------------------------------------
+            -->
+                <div id="content_junk_single">
+                    <form>
+                        <div class="mb-3">
+                            <label for="junk_items_select" class="form-label">Item</label>
+                            <select class="form-control" id="junk_items_select" aria-describedby="Junk Item" onchange="ClearJunkAmount()">
+                        </div>                            
+                        <div class="mb-3">
+                            <label for="junk_amount" class="form-label">Storage</label>
+                            <input type="text" class="form-control" id="junk_amount" placeholder="Storage Qty">
                         </div>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  id="junk_amount" placeholder="Storage Amount" class="form-control"  type="text">
+                        <button type="button" class="btn btn-primary" onclick="ShowJunkItemData()">Submit</button>
+                    </form>
+                    <div id="junk_item_data">
+                        <form>
+                            <div class="mb-3">
+                                <label for="item.name" class="form-label">Item</label>
+                                <input type="text" class="form-control" id="item.name" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.amount" class="form-label">Stored</label>
+                                <input type="text" class="form-control" id="item.amount" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.Keep" class="form-label">Keep</label>
+                                <input type="text" class="form-control" id="item.Keep" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.sell" class="form-label">Sell</label>
+                                <input type="text" class="form-control" id="item.sell" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.SellPrice" class="form-label">Caps</label>
+                                <input type="text" class="form-control" id="item.SellPrice" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.BulkQuantity" class="form-label">Bulk Qty</label>
+                                <input type="text" class="form-control" id="item.BulkQuantity" aria-describedby="Junk Item" disabled readonly>
+                                <label for="item.BulkPrice" class="form-label">Bulk Caps</label>
+                                <input type="text" class="form-control" id="item.BulkPrice" aria-describedby="Junk Item" disabled readonly>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </fieldset>
-            </form>
-            <div id="junk_item_data"></div>
+                </div>
+            </div>
+            <div class="col-1"></div>
         </div>
     </div>
 </body>
 
 </html>
-<script>
-
-</script>
