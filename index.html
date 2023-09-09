@@ -126,6 +126,30 @@
                         <button type="button" class="btn btn-primary" onclick="ShowJunkItemData()">View</button>
                     </form>
                     <div id="junk_item_data">
+                        <table class="table table-striped table-bordered" id="allJunkTable">
+                            <tr>
+                                <th>Item</th><td id="item.name"></td>
+                            </tr>
+                            <tr>
+                                <th>Stored</th><td id="item.amount"></td>
+                            </tr>
+                            <tr>
+                                <th>Keep</th><td id="item.Keep"></td>
+                            </tr>
+                            <tr>
+                                <th>Sell</th><td id="item.sell"></td>
+                            </tr>
+                            <tr>
+                                <th>Caps</th><td id="item.SellPrice"></td>
+                            </tr>
+                            <tr>
+                                <th>Bulk Qty</th><td id="item.BulkQuantity"></td>
+                            </tr>
+                            <tr>
+                                <th>Bulk Caps</th><td id="item.BulkPrice"></td>
+                            </tr>
+                        </table>
+                        <!--
                         <form>
                             <div class="mb-3">
                                 <label for="item.name" class="form-label">Item</label>
@@ -143,7 +167,7 @@
                                 <label for="item.BulkPrice" class="form-label">Bulk Caps</label>
                                 <input type="text" class="form-control" id="item.BulkPrice" aria-describedby="Junk Item" disabled readonly>
                             </div>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </div>

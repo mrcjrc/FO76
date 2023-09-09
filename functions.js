@@ -93,26 +93,13 @@ function ShowJunkItemData() {
                 sell = 0;
             }
             divElement = document.getElementById("junk_item_data");
-            document.getElementById("item.name").value = item.Item;
-            document.getElementById("item.amount").value = amount;
-            document.getElementById("item.Keep").value = item.Keep;
-            document.getElementById("item.sell").value = sell;
-            document.getElementById("item.SellPrice").value = item.SellPrice;
-            document.getElementById("item.BulkQuantity").value = item.BulkQuantity;
-            document.getElementById("item.BulkPrice").value = item.BulkPrice;
-            // Update the content of the div
-            /*
-            let table = "<table>";
-            table += `<tr><td><b>Item</b></td><td>${item.Item}</td></tr>`;
-            table += `<tr><td><b>Stored</b></td><td>${amount}</td></tr>`;
-            table += `<tr><td><b>Keep</b></td><td>${item.Keep}</td></tr>`;
-            table += `<tr><td><b>Sell</b></td><td>${sell}</td></tr>`;
-            table += `<tr><td><b>Price</b></td><td>${item.SellPrice}</td></tr>`;
-            table += `<tr><td><b>Bulk</b></td><td>${item.BulkQuantity}</td></tr>`;
-            table += `<tr><td><b>Bulk Price</b></td><td>${item.BulkPrice}</td></tr>`;
-            table += "</table>";
-            divElement.innerHTML = "<hr>" + table;
-            */
+            document.getElementById("item.name").innerHTML = item.Item;
+            document.getElementById("item.amount").innerHTML = amount;
+            document.getElementById("item.Keep").innerHTML = item.Keep;
+            document.getElementById("item.sell").innerHTML = sell;
+            document.getElementById("item.SellPrice").innerHTML = item.SellPrice;
+            document.getElementById("item.BulkQuantity").innerHTML = item.BulkQuantity;
+            document.getElementById("item.BulkPrice").innerHTML = item.BulkPrice;
         }
     }
 }
