@@ -4,44 +4,33 @@
     <script src="Data_Junk.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="functions.js"></script>
+    <script src="forms.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body onload="ShowElement('')">
-    <nav class="slidemenu">
-
-        <!-- Item 1 -->
-        <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
-        <label for="slide-item-1" onclick="ShowContentJunk()">
-            <p class="icon">♬</p><span>Junk</span>
-        </label>
-
-        <!-- Item 2 -->
-        <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
-        <label for="slide-item-2" onclick="ShowContentLegendaries()">
-            <p class="icon">★</p><span>Legendaries</span>
-        </label>
-
-        <!-- Item 3 -->
-        <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
-        <label for="slide-item-3">
-            <p class="icon">✈</p><span>Folio</span>
-        </label>
-
-        <!-- Item 4 -->
-        <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
-        <label for="slide-item-4">
-            <p class="icon">✎</p><span>Blog</span>
-        </label>
-
-        <div class="clear"></div>
-
-        <!-- Bar -->
-        <div class="slider">
-            <div class="bar"></div>
+    <div class="container">
+        
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Junk <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" onclick="ShowContentJunk('all')">All Junk</a></li>
+                <li><a href="#" onclick="ShowContentJunk('single')">Individual</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
         </div>
-
-    </nav>
-    <div class="content">
+      </nav>
         <div id="content_legendaries">
             <table>
                 <tr>
@@ -70,18 +59,27 @@
                 </tr>
             </table>
         </div>
-        <div id="content_junk">
-            <a href="#" onclick="ShowContentJunk('all')">All</a> |
-            <a href="#" onclick="ShowContentJunk('single')">Single</a>
-            <hr>
-            <div id="content_junk_all">
-            </div>
-            <div id="content_junk_single">
-                <select id="junk_items_select" onchange="ClearJunkAmount()" style="margin:2px"></select><br />
-                <input type="text" id="junk_amount"placeholder="Stored Amount *" style="margin:2px"><br />
-                <input type="button" value="Apply" onclick="ShowJunkItemData()" style="margin:2px" /><br />
-                <div id="junk_item_data"></div>
-            </div>
+        <div id="content_junk_all"></div>
+        <div id="content_junk_single">
+            <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+                <fieldset>
+                    <div class="form-group"> 
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select id="junk_items_select" class="form-control selectpicker" ></select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  id="junk_amount" placeholder="Storage Amount" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div id="junk_item_data"></div>
         </div>
     </div>
 </body>

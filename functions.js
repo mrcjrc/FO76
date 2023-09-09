@@ -9,7 +9,8 @@ function ToggleElement(id, style) {
 function ShowElement(id) {
     var ids = [
         "content_legendaries",
-        "content_junk"
+        "content_junk_all",
+        "content_junk_single"
     ];
     for (i = 0; i < ids.length; i++) {
         var style = None;
