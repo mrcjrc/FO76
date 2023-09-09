@@ -1,5 +1,6 @@
 var Block = "block";
 var None = "none";
+
 function ToggleElement(id, style) {
     console.log(`Toggle : ${id} : ${style}`);
     var divElement = document.getElementById(id);
